@@ -5,11 +5,10 @@ ports:
 tasks:  
   - name: keycloak
     init: >-
-      export IMAGE="${IMAGE:=quay.io/keycloak/keycloak:12.0.4}" &&
-      export KEYCLOAK_USER="${KEYCLOAK_USER:=admin}" &&
-      export KEYCLOAK_PASSWORD="${KEYCLOAK_PASSWORD:=password}" &&
-      export KEYCLOAK_STATISTICS="${KEYCLOAK_STATISTICS:=all}" &&
-      export KEYCLOAK_LOGLEVEL="${KEYCLOAK_LOGLEVEL:=INFO}" &&
+      export IMAGE="${IMAGE:=quay.io/keycloak/keycloak:26.0.5}" &&
+      export KC_BOOTSTRAP_ADMIN_USERNAME="${KC_BOOTSTRAP_ADMIN_USERNAME:=admin}" &&
+      export KC_BOOTSTRAP_ADMIN_PASSWORD="${KC_BOOTSTRAP_ADMIN_PASSWORD:=password}" &&
+      export KC_LOG_CONSOLE_LEVEL="${KC_LOG_CONSOLE_LEVEL:=info}" &&
       export JAVA_OPTS_APPEND="${JAVA_OPTS_APPEND:=-Dkeycloak.profile.feature.upload_script=enabled -Dkeycloak.profile.feature.scripts=enabled -Dkeycloak.profile.feature.account2=enabled -Dkeycloak.profile.feature.account_api=enabled}" &&
       docker-compose up -d &&
       docker logs -f keycloak
